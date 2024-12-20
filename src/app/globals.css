@@ -19,3 +19,10 @@ body {
   background: var(--background); */
   font-family: Arial, Helvetica, sans-serif;
 }
+.app-container {
+  /* padding-left: 80px;
+  padding-right: 80px; */
+  width: 1440px;
+  margin: 0 auto;
+  
+}
