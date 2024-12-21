@@ -3,6 +3,7 @@ import HeroSection from './HeroSection/HeroSection';
 import OverviewSection from './OverviewSection/OverviewSection';
 import GallerySection from './GallerySection/GallerySection';
 import AmenitiesSection from './AmenitiesSection/AmenitiesSection';
+import ContactSection from './ContactSection/ContactSection';
 
 const HomePage = () => {
     return (
@@ -11,6 +12,7 @@ const HomePage = () => {
             <OverviewSection />
             <GallerySection />
             <AmenitiesSection />
+            <ContactSection />
         </div>
     );
 };
