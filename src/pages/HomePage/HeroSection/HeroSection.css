@@ -1,0 +1,16 @@
+.main-hero h1{
+    position: relative;
+}
+.main-hero h1::before{
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 80px;
+    height: 5px;
+    border-radius: 100px;
+    background: white;
+}
+.main-hero h1 span{
+    margin-left: 100px;
+}
