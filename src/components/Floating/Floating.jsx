@@ -7,6 +7,43 @@ const Floating = () => {
     const [show_enquire, set_show_enquire] = useState(false);
     const [show_form, set_show_form] = useState(false);
     const [show_zero, set_show_zero] = useState(false);
+
+    // Form submission
+    const [formData, setFormData] = useState({
+        fullName: '',
+        phone: ''
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await fetch('http://localhost:5000/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData) 
+            });
+
+            const result = await response.json();
+            console.log("result: ", result)
+            if (result.success) {
+                alert('Form submitted successfully!');
+            } else {
+                alert('Error submitting form!');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error submitting form!');
+        }
+    };
+
     return (
         <div className='fixed top-1/3 right-10  z-50 '>
             <div>
@@ -19,16 +56,22 @@ const Floating = () => {
                         <p>Enquire here</p>
                         <button onClick={() => set_show_form(false)}><HiXMark /></button>
                     </div>
-                    <form action="" className='mt-5 mb-2'>
+                    <form onSubmit={handleSubmit} className='mt-5 mb-2'>
                         <input
                             type="text"
                             placeholder='Full Name'
+                            name="fullName"
                             className='border-b border-gray-300 text-gray-800 outline-none py-2 w-full mb-7'
+                            value={formData.fullName}
+                            onChange={handleChange}
                         />
                         <input
                             type="text"
                             placeholder='Enter Phone No.'
+                            name="phone"
                             className='border-b border-gray-300 text-gray-800 outline-none py-2 w-full mb-10'
+                            value={formData.phone}
+                            onChange={handleChange}
                         />
                         <input
                             type="submit"

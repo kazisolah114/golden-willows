@@ -15,16 +15,16 @@ const ContactSection = () => {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();  // Prevent default form submission
+        e.preventDefault(); 
 
         try {
-            // Send data to the Node.js backend
+
             const response = await fetch('http://localhost:5000/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(formData)  // Send form data as JSON
+                body: JSON.stringify(formData)
             });
 
             const result = await response.json();
@@ -47,7 +47,7 @@ const ContactSection = () => {
                 <div className='w-3/4 grid grid-cols-2 mx-auto gap-x-14 gap-y-20'>
                     <input
                         type="text"
-                        placeholder='Full name'
+                        placeholder='Full Name'
                         className='border-b border-gray-400 outline-none py-2'
                         name="fullName"
                         value={formData.fullName}
@@ -55,7 +55,7 @@ const ContactSection = () => {
                     />
                     <input
                         type="text"
-                        placeholder='Project name'
+                        placeholder='Project Name'
                         className='border-b border-gray-400 outline-none py-2'
                         name="projectName"
                         value={formData.projectName}
@@ -71,7 +71,7 @@ const ContactSection = () => {
                     />
                     <input
                         type="text"
-                        placeholder='Enter Phone'
+                        placeholder='Enter Phone No.'
                         className='border-b border-gray-400 outline-none py-2'
                         name="phone"
                         value={formData.phone}
