@@ -22,7 +22,7 @@ const GallerySection = () => {
 
     return (
         <section className=" py-20">
-            <div className="app-container">
+            <div className="px-20 max-lg:px-10 max-md:px-5">
                 <h4 className="text-lg mb-16">Gallery</h4>
                 <Swiper
                     onBeforeInit={(swiper) => {

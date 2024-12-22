@@ -5,6 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-playfair: var(--font-playfair);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,15 +15,19 @@
   }
 }
 
+/* Apply Playfair Display to all text globally */
 body {
   /* color: var(--foreground);
   background: var(--background); */
+  font-family: var(--font-playfair);
+}
+
+/* Override p and a tags to use a different font */
+p, a, ul, li, input, link, button {
   font-family: Arial, Helvetica, sans-serif;
 }
+
 .app-container {
-  /* padding-left: 80px;
-  padding-right: 80px; */
-  width: 1440px;
-  margin: 0 auto;
-  
+  padding-left: 80px;
+  padding-right: 80px;
 }

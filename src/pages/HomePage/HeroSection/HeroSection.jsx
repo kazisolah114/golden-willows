@@ -15,7 +15,7 @@ const HeroSection = () => {
 
             {/* Overlay Content */}
             <div className='bg-black bg-opacity-40  relative z-10 flex flex-col  justify-center h-full  '>
-                <div className="app-container main-hero">
+                <div className="px-20 max-lg:px-10 max-md:px-5 main-hero">
                     <h1 className='text-white text-8xl font-semibold'><span>Views beyond</span> <br /> imagination</h1>
                     <h4 className='text-3xl my-8 text-white'>Golden Willows, a Hiranandani Project in Panvel</h4>
                     <p className='text-gray-300 mb-3'>8 Buildings - Fortune City Project</p>

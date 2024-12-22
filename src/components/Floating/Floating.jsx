@@ -82,7 +82,7 @@ const Floating = () => {
                 </div>
             </div>
             <div className='relative'>
-                <h1 onMouseOver={() => set_show_zero(true)} className='border border-gray-400 w-14 h-14 rounded-full bg-white flex items-center justify-center text-xl font-semibold cursor-pointer'>0</h1>
+                <p onMouseOver={() => set_show_zero(true)} className='border border-gray-400 w-14 h-14 rounded-full bg-white flex items-center justify-center text-xl text-grya-800 font-[500] cursor-pointer'>0</p>
                 <div onMouseLeave={() => set_show_zero(false)} className={`${show_zero ? '' : 'hidden'} bg-white border border-gray-400 rounded-lg p-4 w-[26rem] absolute top-0 right-0`}>
                     <p>Why pay extra when you don't have to? </p>
                     <h3 className='font-semibold my-5 text-2xl'> Your perfect space-
