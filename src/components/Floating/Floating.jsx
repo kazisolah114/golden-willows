@@ -45,7 +45,7 @@ const Floating = () => {
     };
 
     return (
-        <div className='fixed top-1/3 right-10  z-50 '>
+        <div className='fixed top-1/3 max-md:top-24 right-20 max-md:right-5  z-50 '>
             <div>
                 <h1 onMouseOver={() => set_show_enquire(true)} className='border border-gray-400 w-14 h-14 rounded-full bg-white flex items-center justify-center text-xl font-semibold cursor-pointer mb-4'><HiOutlinePhone className='text-xl' /></h1>
                 <div onMouseLeave={() => set_show_enquire(false)} onClick={() => set_show_form(true)} className={`${show_enquire ? '' : 'hidden'} bg-white border border-gray-400 rounded-lg p-4 w-max absolute top-0 right-0 cursor-pointer flex items-center gap-2`}>

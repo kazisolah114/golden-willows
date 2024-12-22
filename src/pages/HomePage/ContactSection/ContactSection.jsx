@@ -44,7 +44,7 @@ const ContactSection = () => {
         <div className='py-20 px-20 max-lg:px-10 max-md:px-5'>
             <h4 className="text-lg mb-16">Access further details</h4>
             <form onSubmit={handleSubmit}>
-                <div className='w-3/4 grid grid-cols-2 mx-auto gap-x-14 gap-y-20'>
+                <div className='md:w-3/4 grid grid-cols-2 mx-auto gap-x-14 max-sm:gap-x-5 gap-y-20'>
                     <input
                         type="text"
                         placeholder='Full Name'
