@@ -4,10 +4,12 @@ import OverviewSection from './OverviewSection/OverviewSection';
 import GallerySection from './GallerySection/GallerySection';
 import AmenitiesSection from './AmenitiesSection/AmenitiesSection';
 import ContactSection from './ContactSection/ContactSection';
+import Floating from '@/components/Floating/Floating';
 
 const HomePage = () => {
     return (
-        <div>
+        <div className='relative'>
+            <Floating />
             <HeroSection />
             <OverviewSection />
             <GallerySection />
