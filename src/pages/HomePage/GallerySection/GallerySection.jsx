@@ -24,9 +24,9 @@ const GallerySection = () => {
     const toggleShowMore = () => setShowMore(!showMore);
 
     return (
-        <section className="py-20">
+        <section className="py-20" id="gallery">
             <div className="px-20 max-lg:px-10 max-md:px-5">
-                <h4 className="text-lg mb-16">Gallery</h4>
+                <p className="text-lg mb-16">Gallery</p>
 
                 {/* Swiper for large screens */}
                 <div className="max-md:hidden">

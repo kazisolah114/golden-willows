@@ -19,8 +19,8 @@ const OverviewSection = () => {
     const [current_section, set_current_section] = useState("first");
 
     return (
-        <div className="px-20 max-lg:px-10 max-md:px-5 py-20">
-            <h4 className="text-lg mb-28">Overview</h4>
+        <div className="px-20 max-lg:px-10 max-md:px-5 py-20" id="overview">
+            <p className="text-lg mb-28">Overview</p>
             {isSmallScreen ? (
                 // Small screen: Show all sections stacked in one column
                 <div className="grid grid-cols-1 gap-10">

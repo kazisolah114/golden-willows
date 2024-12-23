@@ -41,8 +41,8 @@ const ContactSection = () => {
     };
 
     return (
-        <div className='py-20 px-20 max-lg:px-10 max-md:px-5'>
-            <h4 className="text-lg mb-16">Access further details</h4>
+        <div className='py-20 px-20 max-lg:px-10 max-md:px-5' id="contact">
+            <p className="text-lg mb-16">Access further details</p>
             <form onSubmit={handleSubmit}>
                 <div className='md:w-3/4 grid grid-cols-2 mx-auto gap-x-14 max-sm:gap-x-5 gap-y-20'>
                     <input
