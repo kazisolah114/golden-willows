@@ -1,8 +1,7 @@
 "use client";
+import React, { useState, useRef, useEffect } from "react";
+import "./OverviewSection.css";
 import Image from "next/image";
-import React, { useState } from "react";
-import useMediaQuery from "@mui/material/useMediaQuery"; // Import this for media query
-import './OverviewSection.css';
 
 const OverviewSection = () => {
     const overview_data = {
@@ -15,49 +14,73 @@ const OverviewSection = () => {
         avg_price: "17.58 K - ₹18.49 K/sq.ft",
     };
 
-    const isSmallScreen = useMediaQuery("(max-width: 1024px)"); // Check if the screen is under 'lg' size
-    const [current_section, set_current_section] = useState("first");
+    const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
+    const isScrolling = useRef(false);
+    const sectionRefs = useRef([]);
+
+    const sections = [
+        <SectionOne overview_data={overview_data} />,
+        <SectionTwo />,
+        <SectionThree />,
+    ];
+
+    const handleScroll = (event) => {
+        if (isScrolling.current) return;
+
+        const nextSectionIndex =
+            event.deltaY > 0
+                ? Math.min(currentSectionIndex + 1, sections.length - 1)
+                : Math.max(currentSectionIndex - 1, 0);
+
+        if (nextSectionIndex !== currentSectionIndex) {
+            isScrolling.current = true;
+            sectionRefs.current[nextSectionIndex]?.scrollIntoView({
+                behavior: "smooth",
+            });
+            setCurrentSectionIndex(nextSectionIndex);
+
+            setTimeout(() => {
+                isScrolling.current = false;
+            }, 700); // Prevent rapid scrolling
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener("wheel", handleScroll, { passive: false });
+        return () => {
+            window.removeEventListener("wheel", handleScroll);
+        };
+    }, [currentSectionIndex, sections.length]);
 
     return (
-        <div className="px-20 max-lg:px-10 max-md:px-5 py-20" id="overview">
-            <p className="text-lg mb-28">Overview</p>
-            {isSmallScreen ? (
-                // Small screen: Show all sections stacked in one column
-                <div className="grid grid-cols-1 gap-10">
-                    <SectionOne overview_data={overview_data} />
-                    <SectionTwo />
-                    <SectionThree />
+        <div className="overview-section px-20 max-lg:px-10 max-md:px-5 py-20">
+            <p className="text-lg mb-16">Overview</p>
+            <div className="grid grid-cols-11 gap-5 items-start">
+                <div className="section-indicators col-span-1">
+                    {sections.map((_, index) => (
+                        <div
+                            key={index}
+                            className={`indicator ${index === currentSectionIndex ? "active" : ""
+                                }`}
+                        ></div>
+                    ))}
                 </div>
-            ) : (
-                // Larger screens: Show sections with buttons for interaction
-                <div className="grid grid-cols-8">
-                    <div className="actions flex flex-col gap-3">
-                        {["first", "second", "third"].map((section) => (
-                            <button
-                                key={section}
-                                onClick={() => set_current_section(section)}
-                                className={`${
-                                    current_section === section
-                                        ? "w-20 bg-gray-800 scale-105"
-                                        : "w-14 bg-gray-300"
-                                } h-2 rounded-full transition-all duration-300`}
-                            ></button>
-                        ))}
+                {sections.map((section, index) => (
+                    <div
+                        key={index}
+                        ref={(el) => (sectionRefs.current[index] = el)}
+                        className={`col-span-10 scroll-section ${index === currentSectionIndex ? "visible" : "hidden"
+                            }`}
+                    >
+                        {section}
                     </div>
-                    <div className="sections col-span-7 relative overflow-hidden">
-                        {current_section === "first" && (
-                            <SectionOne overview_data={overview_data} />
-                        )}
-                        {current_section === "second" && <SectionTwo />}
-                        {current_section === "third" && <SectionThree />}
-                    </div>
-                </div>
-            )}
+                ))}
+            </div>
         </div>
     );
 };
 
-// Reusable Section Components for clarity
+
 const SectionOne = ({ overview_data }) => (
     <section className="max-lg:mb-10 grid grid-cols-2 max-lg:grid-cols-1 gap-44 max-lg:gap-20 items-center animate-slide-in-up">
         <div>

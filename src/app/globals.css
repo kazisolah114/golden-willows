@@ -31,3 +31,9 @@ p, a, ul, li, input, link, button {
   padding-left: 80px;
   padding-right: 80px;
 }
+
+
+/* Chrome, Safari and Opera */
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}

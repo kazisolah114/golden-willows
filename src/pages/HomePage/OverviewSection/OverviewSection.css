@@ -25,3 +25,43 @@
 .animate-slide-in-up {
     animation: slide-in-up 0.5s ease-in-out;
 }
+
+.overview-section {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .scroll-section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .scroll-section.visible {
+    display: block;
+    opacity: 1;
+  }
+  
+  .indicators {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .indicator {
+    margin-bottom: 5px;
+    width: 35px;
+    height: 8px;
+    background-color: #ccc;
+    border-radius: 100px;
+    transition: background-color 0.3s;
+  }
+  
+  .indicator.active {
+    width: 50px;
+    background-color: #171818;
+  }
+  
