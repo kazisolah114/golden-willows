@@ -53,7 +53,7 @@ const OverviewSection = () => {
     }, [currentSectionIndex, sections.length]);
 
     return (
-        <div className="overview-section px-20 max-lg:px-10 max-md:px-5 py-20">
+        <div className="overview-section px-20 max-lg:px-10 max-md:px-5 py-20" id="overview">
             <p className="text-lg mb-16">Overview</p>
             <div className="grid grid-cols-11 gap-5 items-start">
                 <div className="section-indicators col-span-1">

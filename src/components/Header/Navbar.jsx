@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-const Navbar = ({set_show_responsive_menu}) => {
+const Navbar = ({set_show_responsive_menu = () => {}}) => {
     const navs = [
         {title: "Home", path: "/"},
         {title: "Overview", path: "#overview"},
