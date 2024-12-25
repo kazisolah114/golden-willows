@@ -5,6 +5,7 @@ import GallerySection from './GallerySection/GallerySection';
 import AmenitiesSection from './AmenitiesSection/AmenitiesSection';
 import ContactSection from './ContactSection/ContactSection';
 import Floating from '@/components/Floating/Floating';
+import Plan from './Plan/Plan';
 
 const HomePage = () => {
     return (
@@ -15,6 +16,7 @@ const HomePage = () => {
             <GallerySection />
             <AmenitiesSection />
             <ContactSection />
+            <Plan />
         </div>
     );
 };
