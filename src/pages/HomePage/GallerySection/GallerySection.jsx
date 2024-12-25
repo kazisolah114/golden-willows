@@ -1,7 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -28,7 +27,6 @@ const GallerySection = () => {
             <div className="px-20 max-lg:px-10 max-md:px-5">
                 <p className="text-lg mb-16">Gallery</p>
 
-                {/* Swiper for large screens */}
                 <div className="max-md:hidden">
                     <Swiper
                         onBeforeInit={(swiper) => {
@@ -40,8 +38,9 @@ const GallerySection = () => {
                             delay: 1000,
                         }}
                         loop={true}
-                        className="pb-10"
+                        className="pb-10 relative"
                     >
+
                         {slides.map((slide, index) => (
                             <SwiperSlide key={index}>
                                 <div className="bg-gray-800 rounded-lg shadow-lg flex flex-col items-center justify-center relative">
@@ -70,32 +69,31 @@ const GallerySection = () => {
                                             className=""
                                         />
                                     </div>
-                                    <div className="absolute top-[50%] left-0 w-full flex justify-between items-center px-5">
-                                        <button
-                                            onClick={() => swiperRef.current?.slidePrev()}
-                                            aria-label="Previous"
-                                            className="w-20 h-20 flex items-center justify-center text-xl border-gray-200 border text-white rounded-full bg-transparent backdrop-blur-md"
-                                        >
-                                            <HiArrowLeft />
-                                        </button>
-                                        <button
-                                            onClick={() => swiperRef.current?.slideNext()}
-                                            aria-label="Next"
-                                            className="w-20 h-20 flex items-center justify-center text-xl border-gray-200 border text-white rounded-full bg-transparent backdrop-blur-md"
-                                        >
-                                            <HiArrowRight />
-                                        </button>
-                                    </div>
                                 </div>
                             </SwiperSlide>
                         ))}
+
+                        <button
+                            onClick={() => swiperRef.current?.slidePrev()}
+                            aria-label="Previous"
+                            className="w-20 h-20 flex items-center justify-center text-xl border-gray-200 border text-white rounded-full bg-transparent backdrop-blur-md absolute top-[50%] -translate-y-1/2 left-5 z-10"
+                        >
+                            <HiArrowLeft />
+                        </button>
+                        <button
+                            onClick={() => swiperRef.current?.slideNext()}
+                            aria-label="Next"
+                            className="w-20 h-20 flex items-center justify-center text-xl border-gray-200 border text-white rounded-full bg-transparent backdrop-blur-md absolute top-[50%] -translate-y-1/2 right-5 z-10"
+                        >
+                            <HiArrowRight />
+                        </button>
+
                     </Swiper>
                 </div>
 
-                {/* Grid for small screens */}
                 <div className="hidden max-md:block">
                     <div className="grid grid-cols-1 gap-5">
-                        {/* First two images */}
+
                         {slides.slice(0, 2).map((slide, index) => (
                             <div key={index} className="rounded-lg overflow-hidden">
                                 <Image
@@ -109,10 +107,10 @@ const GallerySection = () => {
                         ))}
                     </div>
 
-                    {/* Additional images */}
+
                     {showMore && (
                         <div className="grid grid-cols-3 gap-5 mt-5">
-                            {/* First row: col-span-2 vs col-span-1 */}
+
                             <div className="col-span-2 rounded-lg overflow-hidden">
                                 <Image
                                     src={slides[2]}
@@ -132,7 +130,6 @@ const GallerySection = () => {
                                 />
                             </div>
 
-                            {/* Second row: col-span-1 vs col-span-2 */}
                             <div className="col-span-1 rounded-lg overflow-hidden">
                                 <Image
                                     src={slides[3]}
@@ -154,7 +151,6 @@ const GallerySection = () => {
                         </div>
                     )}
 
-                    {/* Show More / Show Less Button */}
                     <div className="flex justify-center mt-5">
                         <button
                             onClick={toggleShowMore}
