@@ -1,4 +1,5 @@
 "use client";
+import OtpInput from '@/components/OtpInput/OtpInput';
 import React, { useState } from 'react';
 
 const ContactSection = () => {
@@ -6,7 +7,8 @@ const ContactSection = () => {
         fullName: '',
         projectName: '',
         unit: '',
-        phone: ''
+        phone: '',
+        otp: '',
     });
 
     const handleChange = (e) => {
@@ -15,7 +17,7 @@ const ContactSection = () => {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
 
         try {
 
@@ -40,11 +42,13 @@ const ContactSection = () => {
         }
     };
 
+    const [otp_sent, set_otp_sent] = useState(false);
+
     return (
         <div className='py-20 px-20 max-lg:px-10 max-md:px-5' id="contact">
             <p className="text-lg mb-16">Access further details</p>
             <form onSubmit={handleSubmit}>
-                <div className='md:w-3/4 grid grid-cols-2 mx-auto gap-x-14 max-sm:gap-x-5 gap-y-20'>
+                <div className='md:w-3/4 mx-auto grid grid-cols-2  gap-x-14 max-sm:gap-x-5 gap-y-20'>
                     <input
                         type="text"
                         placeholder='Full Name'
@@ -77,11 +81,18 @@ const ContactSection = () => {
                         value={formData.phone}
                         onChange={handleChange}
                     />
-                    <input
-                        type="submit"
-                        value="Send"
-                        className='bg-[#1E1E1E] w-56 p-3 rounded-lg text-white  text-lg cursor-pointer'
-                    />
+                </div>
+                <div className='mt-16 flex flex-col gap-10 items-center justify-center'>
+                    <div className={`${otp_sent ? '' : 'hidden'}`}>
+                        <OtpInput />
+                    </div>
+                    <div>
+                        <input
+                            type="submit"
+                            value="Send OTP"
+                            className='bg-[#1E1E1E] hover:bg-[#292828] duration-200 w-56 p-4 rounded-lg text-white   cursor-pointer'
+                        />
+                    </div>
                 </div>
             </form>
         </div>
