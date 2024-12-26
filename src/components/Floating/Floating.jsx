@@ -30,7 +30,7 @@ const Floating = () => {
         try {
             set_otp_sent(true);
             if (otp_sent && isValid) {
-                const response = await fetch('http://localhost:5000/api/contact', {
+                const response = await fetch('https://golden-willows-server.vercel.app/api/contact', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -53,7 +53,7 @@ const Floating = () => {
     };
 
     return (
-        <div className="fixed top-1/3 max-md:top-24 right-20 max-md:right-5 z-30">
+        <div className="fixed top-1/3 max-md:top-24 right-20 max-md:right-5 z-30 ">
             <div>
                 <h1
                     onMouseOver={() => set_show_enquire(true)}
@@ -69,7 +69,7 @@ const Floating = () => {
                     <FaWhatsapp className="text-xl" /> <p>Enquire here</p>
                 </div>
                 <div
-                    className={`${show_form ? '' : 'hidden'} z-20 bg-white border border-gray-400 rounded-lg p-4 w-[26rem] absolute top-0 right-0`}
+                    className={`${show_form ? '' : 'hidden'}   z-20 bg-white border border-gray-400 rounded-lg p-4 max-md:w-80 w-96 absolute top-0 right-0`}
                 >
                     <div className="flex items-center justify-between">
                         <p>Enquire here</p>
@@ -114,7 +114,7 @@ const Floating = () => {
 
 
             {show_success_message && (
-                <div className="z-30 bg-white border border-gray-400 rounded-lg p-4 w-[26rem] absolute top-0 right-0">
+                <div className="z-30 bg-white border border-gray-400 rounded-lg p-4 max-md:w-80 w-96 absolute top-0 right-0">
                     <h2 className="text-2xl font-semibold mb-4">Thank you for registering your interest!</h2>
                     <p className="text-gray-800">
                         Due to high traffic, we may take some time to reach out to you. Your patience and understanding
@@ -138,7 +138,7 @@ const Floating = () => {
                 </p>
                 <div
                     onMouseLeave={() => set_show_zero(false)}
-                    className={`${show_zero ? '' : 'hidden'} bg-white border border-gray-400 rounded-lg p-4 w-[26rem] absolute top-0 right-0`}
+                    className={`${show_zero ? '' : 'hidden'} bg-white border border-gray-400 rounded-lg p-4 w-max-md:w-80 w-96 absolute top-0 right-0`}
                 >
                     <p>Why pay extra when you don't have to? </p>
                     <h3 className="font-semibold my-5 text-2xl">

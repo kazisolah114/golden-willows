@@ -1,6 +1,6 @@
 import React from 'react';
 import Marquee from "react-fast-marquee";
-import { HiOutlineUser, HiUser } from 'react-icons/hi2';
+import { HiOutlineCheck, HiOutlineCheckBadge, HiOutlineUser, HiUser } from 'react-icons/hi2';
 
 const Amenities = () => {
     const amenities = [
@@ -25,7 +25,7 @@ const Amenities = () => {
         <div className='mt-20'>
             <Marquee speed={40} className=''>
                 {amenities.map((item, index) => <div key={index} className='ml-14 flex items-center flex-col gap-3'>
-                    <HiOutlineUser className='text-3xl' />
+                    <HiOutlineCheckBadge className='text-3xl' />
                     {item.title}
                 </div>)}
             </Marquee>

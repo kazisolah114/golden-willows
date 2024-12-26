@@ -25,7 +25,7 @@ const AccessDetails = ({ set_show_plan }) => {
         try {
             set_otp_sent(true);
             if (otp_sent && isValid) {
-                const response = await fetch('http://localhost:5000/api/contact', {
+                const response = await fetch('https://golden-willows-server.vercel.app/api/contact', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -49,9 +49,6 @@ const AccessDetails = ({ set_show_plan }) => {
         }
     };
 
-    // const handleAccessPlanClicked = () => {
-    //     set_show_plan(true);
-    // }
 
     return (
         <div className='py-36 px-20 max-lg:px-10 max-md:px-5' id="plans">
@@ -74,6 +71,7 @@ const AccessDetails = ({ set_show_plan }) => {
                         name="projectName"
                         value={formData.projectName}
                         onChange={handleChange}
+                        required
                     />
                     <input
                         type="text"
@@ -82,6 +80,7 @@ const AccessDetails = ({ set_show_plan }) => {
                         name="unit"
                         value={formData.unit}
                         onChange={handleChange}
+                        required
                     />
                     <input
                         type="text"
