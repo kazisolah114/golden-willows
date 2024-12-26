@@ -26,7 +26,7 @@ const Amenities = () => {
             <Marquee speed={40} className=''>
                 {amenities.map((item, index) => <div key={index} className='ml-14 flex items-center flex-col gap-3'>
                     <HiOutlineCheckBadge className='text-3xl' />
-                    {item.title}
+                    <p>{item.title}</p>
                 </div>)}
             </Marquee>
         </div>
