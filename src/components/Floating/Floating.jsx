@@ -2,12 +2,15 @@
 import React, { useState } from 'react';
 import { HiOutlinePhone, HiXMark } from 'react-icons/hi2';
 import { FaWhatsapp } from "react-icons/fa";
+import OtpInput from '../OtpInput/OtpInput';
 
 const Floating = () => {
     const [show_enquire, set_show_enquire] = useState(false);
     const [show_form, set_show_form] = useState(false);
     const [show_zero, set_show_zero] = useState(false);
     const [show_success_message, set_show_success_message] = useState(false);
+
+    const [otp_sent, set_otp_sent] = useState(false);
 
     // Form submission
     const [formData, setFormData] = useState({
@@ -24,24 +27,27 @@ const Floating = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('https://golden-willows-server.vercel.app/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData) 
-            });
-
-            const result = await response.json();
-            if (result.success) {
-                set_show_form(false); // Close the form
-                set_show_success_message(true); // Show success message
-            } else {
-                alert('Error submitting form!');
+            set_otp_sent(true);
+            if (otp_sent) {
+                const response = await fetch('https://golden-willows-server.vercel.app/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                const result = await response.json();
+                if (result.success) {
+                    set_show_form(false); // Close the form
+                    set_show_success_message(true); // Show success message
+                } else {
+                    alert('Error submitting form!');
+                }
             }
         } catch (error) {
             console.error('Error:', error);
             alert('Error submitting form!');
+            set_otp_sent(false);
         }
     };
 
@@ -78,6 +84,7 @@ const Floating = () => {
                             className="border-b border-gray-300 text-gray-800 outline-none py-2 w-full mb-7"
                             value={formData.fullName}
                             onChange={handleChange}
+                            required
                         />
                         <input
                             type="text"
@@ -86,17 +93,25 @@ const Floating = () => {
                             className="border-b border-gray-300 text-gray-800 outline-none py-2 w-full mb-10"
                             value={formData.phone}
                             onChange={handleChange}
+                            required
                         />
-                        <input
-                            type="submit"
-                            value="Submit"
-                            className="bg-[#1E1E1E] w-full p-2 rounded-lg text-white text-lg cursor-pointer"
-                        />
+                        <div className=' flex flex-col gap-10 items-center justify-center'>
+                            <div className={`${otp_sent ? '' : 'hidden'}`}>
+                                <OtpInput />
+                            </div>
+                            <div>
+                                <input
+                                    type="submit"
+                                    value={otp_sent ? "Submit" : "Send OTP"}
+                                    className='bg-[#1E1E1E] hover:bg-[#292828] duration-200 w-56 p-4 rounded-lg text-white   cursor-pointer'
+                                />
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
 
-            
+
             {show_success_message && (
                 <div className="z-30 bg-white border border-gray-400 rounded-lg p-4 w-[26rem] absolute top-0 right-0">
                     <h2 className="text-2xl font-semibold mb-4">Thank you for registering your interest!</h2>

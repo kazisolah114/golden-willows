@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 
-const OtpInput = ({ set_show_plan }) => {
+const OtpInput = ({ set_show_plan = () => {} }) => {
     const [otp, setOtp] = useState(["", "", "", ""]);
     const [isValid, setIsValid] = useState(false); // For checking validity
     useEffect(() => {
