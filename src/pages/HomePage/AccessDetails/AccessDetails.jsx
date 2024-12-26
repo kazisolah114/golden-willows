@@ -2,7 +2,7 @@
 import OtpInput from '@/components/OtpInput/OtpInput';
 import React, { useState } from 'react';
 
-const ContactSection = () => {
+const AccessDetails = ({ set_show_plan }) => {
     const [formData, setFormData] = useState({
         fullName: '',
         projectName: '',
@@ -16,36 +16,41 @@ const ContactSection = () => {
         setFormData({ ...formData, [name]: value });
     };
 
+    const [otp_sent, set_otp_sent] = useState(false);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
+            set_otp_sent(true);
+            if (otp_sent) {
+                const response = await fetch('https://golden-willows-server.vercel.app/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
 
-            const response = await fetch('https://golden-willows-server.vercel.app/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-
-            const result = await response.json();
-            console.log("result: ", result)
-            if (result.success) {
-                alert('Form submitted successfully!');
-            } else {
-                alert('Error submitting form!');
+                const result = await response.json();
+                console.log("result: ", result)
+                if (result.success) {
+                    alert('Form submitted successfully!');
+                } else {
+                    alert('Error submitting form!');
+                }
             }
         } catch (error) {
             console.error('Error:', error);
             alert('Error submitting form!');
+            set_otp_sent(false);
         }
     };
 
-    const [otp_sent, set_otp_sent] = useState(false);
+
 
     return (
-        <div className='py-20 px-20 max-lg:px-10 max-md:px-5' id="contact">
+        <div className='py-36 px-20 max-lg:px-10 max-md:px-5' id="plans">
             <p className="text-lg mb-16">Access further details</p>
             <form onSubmit={handleSubmit}>
                 <div className='md:w-3/4 mx-auto grid grid-cols-2  gap-x-14 max-sm:gap-x-5 gap-y-20'>
@@ -56,6 +61,7 @@ const ContactSection = () => {
                         name="fullName"
                         value={formData.fullName}
                         onChange={handleChange}
+                        required
                     />
                     <input
                         type="text"
@@ -80,16 +86,17 @@ const ContactSection = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
+                        required
                     />
                 </div>
                 <div className='mt-16 flex flex-col gap-10 items-center justify-center'>
                     <div className={`${otp_sent ? '' : 'hidden'}`}>
-                        <OtpInput />
+                        <OtpInput set_show_plan={set_show_plan} />
                     </div>
                     <div>
                         <input
                             type="submit"
-                            value="Send OTP"
+                            value={otp_sent ? "Access Plan" : "Send OTP"}
                             className='bg-[#1E1E1E] hover:bg-[#292828] duration-200 w-56 p-4 rounded-lg text-white   cursor-pointer'
                         />
                     </div>
@@ -99,4 +106,4 @@ const ContactSection = () => {
     );
 };
 
-export default ContactSection;
+export default AccessDetails;

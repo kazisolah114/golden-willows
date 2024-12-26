@@ -15,9 +15,9 @@ const Plan = () => {
     const current_plan = plans.find(plan => plan.configurations === current_config);
     const [plan, set_plan] = useState("floor")
     return (
-        <section className='px-20 max-lg:px-10 max-md:px-5 py-28'>
+        <section className='px-20 max-lg:px-10 max-md:px-5 py-36' id="plans">
             <p className="text-lg mb-5">Plan</p>
-            <div className='grid grid-cols-2 max-md:grid-cols-1 max-md:gap-20 gap-10 items-center'>
+            <div className='grid grid-cols-2 max-md:grid-cols-1  gap-28 items-center'>
                 <div>
                     <h2 className='text-3xl  mb-10'>A Detailed Exploration of Your Dream Home</h2>
                     <div>

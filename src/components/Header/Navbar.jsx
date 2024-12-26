@@ -7,7 +7,7 @@ const Navbar = ({set_show_responsive_menu = () => {}}) => {
         {title: "Overview", path: "#overview"},
         {title: "Gallery", path: "#gallery"},
         {title: "Amenities", path: "#amenities"},
-        {title: "Plans", path: "#contact"},
+        {title: "Plans", path: "#plans"},
     ]
     return (
         <nav className=''>
