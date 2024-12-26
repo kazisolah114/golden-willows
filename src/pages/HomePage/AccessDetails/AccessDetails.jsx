@@ -17,14 +17,15 @@ const AccessDetails = ({ set_show_plan }) => {
     };
 
     const [otp_sent, set_otp_sent] = useState(false);
+    const [isValid, setIsValid] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
             set_otp_sent(true);
-            if (otp_sent) {
-                const response = await fetch('https://golden-willows-server.vercel.app/api/contact', {
+            if (otp_sent && isValid) {
+                const response = await fetch('http://localhost:5000/api/contact', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -36,6 +37,7 @@ const AccessDetails = ({ set_show_plan }) => {
                 console.log("result: ", result)
                 if (result.success) {
                     alert('Form submitted successfully!');
+                    set_show_plan("true");
                 } else {
                     alert('Error submitting form!');
                 }
@@ -47,7 +49,9 @@ const AccessDetails = ({ set_show_plan }) => {
         }
     };
 
-
+    // const handleAccessPlanClicked = () => {
+    //     set_show_plan(true);
+    // }
 
     return (
         <div className='py-36 px-20 max-lg:px-10 max-md:px-5' id="plans">
@@ -91,14 +95,19 @@ const AccessDetails = ({ set_show_plan }) => {
                 </div>
                 <div className='mt-16 flex flex-col gap-10 items-center justify-center'>
                     <div className={`${otp_sent ? '' : 'hidden'}`}>
-                        <OtpInput set_show_plan={set_show_plan} />
+                        <OtpInput isValid={isValid} setIsValid={setIsValid} />
                     </div>
                     <div>
-                        <input
+                        {otp_sent ? <input
                             type="submit"
-                            value={otp_sent ? "Access Plan" : "Send OTP"}
+                            value={"Access Plan"}
+                            // onClick={handleAccessPlanClicked}
                             className='bg-[#1E1E1E] hover:bg-[#292828] duration-200 w-56 p-4 rounded-lg text-white   cursor-pointer'
-                        />
+                        /> : <input
+                            type="submit"
+                            value={"Send OTP"}
+                            className='bg-[#1E1E1E] hover:bg-[#292828] duration-200 w-56 p-4 rounded-lg text-white   cursor-pointer'
+                        />}
                     </div>
                 </div>
             </form>

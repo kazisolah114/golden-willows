@@ -1,15 +1,15 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 
-const OtpInput = ({ set_show_plan = () => {} }) => {
+const OtpInput = ({ isValid, setIsValid, set_show_plan = () => {} }) => {
     const [otp, setOtp] = useState(["", "", "", ""]);
-    const [isValid, setIsValid] = useState(false); // For checking validity
-    useEffect(() => {
-        // Trigger the state update in the parent component if OTP is valid
-        if (isValid) {
-            set_show_plan(true);
-        }
-    }, [isValid, set_show_plan]);
+    
+    // useEffect(() => {
+    //     if (isValid) {
+    //         set_show_plan(true);
+    //     }
+    // }, [isValid, set_show_plan]);
+
     const handleChange = (value, index) => {
         // Allow only numeric input
         if (/^\d*$/.test(value)) {

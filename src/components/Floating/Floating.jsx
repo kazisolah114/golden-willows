@@ -11,6 +11,7 @@ const Floating = () => {
     const [show_success_message, set_show_success_message] = useState(false);
 
     const [otp_sent, set_otp_sent] = useState(false);
+    const [isValid, setIsValid] = useState(false);
 
     // Form submission
     const [formData, setFormData] = useState({
@@ -28,8 +29,8 @@ const Floating = () => {
 
         try {
             set_otp_sent(true);
-            if (otp_sent) {
-                const response = await fetch('https://golden-willows-server.vercel.app/api/contact', {
+            if (otp_sent && isValid) {
+                const response = await fetch('http://localhost:5000/api/contact', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -97,7 +98,7 @@ const Floating = () => {
                         />
                         <div className=' flex flex-col gap-10 items-center justify-center'>
                             <div className={`${otp_sent ? '' : 'hidden'}`}>
-                                <OtpInput />
+                                <OtpInput isValid={isValid} setIsValid={setIsValid} />
                             </div>
                             <div>
                                 <input
