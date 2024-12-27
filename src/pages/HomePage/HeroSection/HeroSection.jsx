@@ -14,7 +14,7 @@ const HeroSection = () => {
             ></video>
             <div className='lg:bg-black lg:bg-opacity-40  relative z-10  h-full flex flex-col justify-center'>
                 <div className='flex max-lg:flex-col gap-10 justify-between items-center px-20 max-lg:px-10 max-md:px-5'>
-                    <div className="max-lg:hidden ">
+                    <div className="max-lg:hidden main-hero">
                         <h1 className='text-white text-8xl max-sm:text-[4rem] font-semibold '><span>Views beyond</span> <br /> imagination</h1>
                         <h4 className='text-3xl my-8 text-white'>Golden Willows, a Hiranandani Project in Panvel</h4>
                         <p className='text-gray-300 mb-3'>8 Buildings — Fortune City Project</p>
