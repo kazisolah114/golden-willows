@@ -44,7 +44,7 @@ const AccessDetails = ({ set_show_plan }) => {
                 }
             }
         } catch (error) {
-            console.error('Error:', error);
+            console.log('Error:', error);
             alert('Error submitting form!');
             set_otp_sent(false);
         }
