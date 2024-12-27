@@ -23,7 +23,7 @@ body {
 }
 
 /* Override p and a tags to use a different font */
-p, a, ul, li, input, link, button, label, input {
+p, a, ul, li, link, button, label, input, select, option{
   font-family: Arial, Helvetica, sans-serif;
 }
 
