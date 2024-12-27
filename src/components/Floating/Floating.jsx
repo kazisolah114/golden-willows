@@ -104,7 +104,7 @@ const Floating = () => {
                                 <input
                                     type="submit"
                                     value={otp_sent ? "Submit" : "Send OTP"}
-                                    className='bg-[#1E1E1E] hover:bg-[#292828] duration-200 w-full text-lg p-4 rounded-lg text-white   cursor-pointer'
+                                    className='bg-[#1E1E1E] hover:bg-[#292828] duration-200 w-full text-lg p-3 rounded-lg text-white   cursor-pointer'
                                 />
                             </div>
                         </div>
