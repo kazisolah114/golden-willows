@@ -216,11 +216,10 @@ const OverviewSection = () => {
                             <button
                                 key={section}
                                 onClick={() => set_current_section(section)}
-                                className={`h-2 rounded-full transition-all duration-300 ${
-                                    current_section === section
+                                className={`h-2 rounded-full transition-all duration-300 ${current_section === section
                                         ? "w-20 bg-gray-800 scale-105"
                                         : "w-14 bg-gray-300"
-                                }`}
+                                    }`}
                             ></button>
                         ))}
                     </div>
@@ -261,7 +260,12 @@ const SectionOne = ({ overview_data }) => (
                         key={key}
                         className="border-b border-gray-300 pb-5 grid grid-cols-3 gap-5 font-[500]"
                     >
-                        <span>{key.charAt(0).toUpperCase() + key.slice(1)}</span>
+                        <span>
+                            {key
+                                .split('_')
+                                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                                .join(' ')}
+                        </span>
                         <span className="font-normal text-[#1E1E1E] col-span-2">
                             {value}
                         </span>
