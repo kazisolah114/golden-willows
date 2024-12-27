@@ -1,5 +1,6 @@
 "use client";
 import OtpInput from '@/components/OtpInput/OtpInput';
+import PhoneNumber from '@/components/PhoneNumber/PhoneNumber';
 import React, { useState } from 'react';
 
 const AccessDetails = ({ set_show_plan }) => {
@@ -82,9 +83,10 @@ const AccessDetails = ({ set_show_plan }) => {
                         onChange={handleChange}
                         required
                     />
+                    {/* <PhoneNumber /> */}
                     <input
                         type="text"
-                        placeholder='Enter Phone No.'
+                        placeholder='+91 - Enter Number'
                         className='border-b border-gray-400 outline-none py-2'
                         name="phone"
                         value={formData.phone}

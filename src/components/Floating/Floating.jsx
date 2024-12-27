@@ -89,7 +89,7 @@ const Floating = () => {
                         />
                         <input
                             type="text"
-                            placeholder="Enter Phone No."
+                            placeholder="+91 - Enter Number"
                             name="phone"
                             className="border-b border-gray-300 text-gray-800 outline-none py-2 w-full mb-10"
                             value={formData.phone}
